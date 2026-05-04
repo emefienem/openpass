@@ -31,7 +31,6 @@
   "devDependencies": {
     "@openpass/eslint-config": "workspace:*",
     "@openpass/typescript-config": "workspace:*",
-    "@openpass/ui": "workspace:*",
     "@types/node": "^22.15.3",
     "@types/qrcode": "^1.5.5",
     "eslint": "^9.39.1",
