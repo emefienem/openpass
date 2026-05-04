@@ -1,11 +1,20 @@
 <div align="center">
-  <img src="apps/web/public/openpass.svg" alt="OpenPass Logo" width="120" />
+  <img src="apps/web/public/openpass.svg" alt="OpenPass Logo" width="280" />
+  <br />
+  <br />
+  <a href="https://turbo.build/">
+    <img src="https://img.shields.io/badge/built%20with-Turborepo-ef4444.svg?style=flat-square&logo=turborepo" alt="Turborepo" />
+  </a>
+  <a href="https://nextjs.org/">
+    <img src="https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js" alt="Next.js" />
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img src="https://img.shields.io/badge/TypeScript-blue?style=flat-square&logo=typescript" alt="TypeScript" />
+  </a>
+  <a href="https://pnpm.io/">
+    <img src="https://img.shields.io/badge/pnpm-orange?style=flat-square&logo=pnpm" alt="pnpm" />
+  </a>
 </div>
-
-[![Turborepo](https://img.shields.io/badge/built%20with-Turborepo-ef4444.svg?style=flat-square&logo=turborepo)](https://turbo.build/)
-[![Next.js](https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![pnpm](https://img.shields.io/badge/pnpm-orange?style=flat-square&logo=pnpm)](https://pnpm.io/)
 
 OpenPass is a modern, high-performance event management and ticketing platform built with scalability and developer experience in mind. This monorepo houses the entire ecosystem, from the core business logic to the web application.
 
@@ -24,12 +33,15 @@ OpenPass is a modern, high-performance event management and ticketing platform b
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js](https://nextjs.org/)
-- **Monorepo Manager**: [Turborepo](https://turbo.build/)
-- **Package Manager**: [pnpm](https://pnpm.io/)
-- **ORM**: [Prisma](https://www.prisma.io/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Component Library**: [Lucide React](https://lucide.dev/), [Framer Motion](https://www.framer.com/motion/)
+| Layer             | Technology                                              |
+|-------------------|---------------------------------------------------------|
+| Framework         | [Next.js](https://nextjs.org/)                          |
+| Monorepo Manager  | [Turborepo](https://turbo.build/)                       |
+| Package Manager   | [pnpm](https://pnpm.io/)                                |
+| ORM               | [Prisma](https://www.prisma.io/)                        |
+| Styling           | [Tailwind CSS](https://tailwindcss.com/)                |
+| Components        | [Lucide React](https://lucide.dev/)                     |
+| Animations        | [Framer Motion](https://www.framer.com/motion/)         |
 
 ---
 
@@ -53,6 +65,7 @@ Ensure you have the following installed:
    ```
 
 2. **Install Dependencies**:
+
    This will automatically install packages and create your local `.env` file from `.env.example`.
 
    ```bash
@@ -60,6 +73,7 @@ Ensure you have the following installed:
    ```
 
 3. **Configure Environment Variables**:
+
    Open the `.env` file and update your credentials (e.g., Google OAuth).
 
 4. **Start the Database**:
@@ -69,9 +83,11 @@ Ensure you have the following installed:
    ```
 
 5. **Launch Development Server**:
+
    ```bash
    pnpm dev
    ```
+
    Navigate to `http://localhost:3002` for the web application.
 
 ---
@@ -97,9 +113,11 @@ Ensure you have the following installed:
 
 The project uses **Prisma** for database operations.
 
-- **Generate Client**: `pnpm turbo run db:generate`
-- **Push Schema**: `pnpm --filter @openpass/db prisma db push`
-- **Studio**: `pnpm --filter @openpass/db prisma studio`
+| Command              | Script                                              |
+|----------------------|-----------------------------------------------------|
+| Generate Client      | `pnpm turbo run db:generate`                        |
+| Push Schema          | `pnpm --filter @openpass/db prisma db push`         |
+| Open Prisma Studio   | `pnpm --filter @openpass/db prisma studio`          |
 
 ---
 
@@ -107,9 +125,11 @@ The project uses **Prisma** for database operations.
 
 We use Docker Compose to manage local services (PostgreSQL).
 
-- **Up**: `pnpm docker:up`
-- **Down**: `pnpm docker:down`
-- **Logs**: `pnpm docker:logs`
+| Command | Script              |
+|---------|---------------------|
+| Up      | `pnpm docker:up`    |
+| Down    | `pnpm docker:down`  |
+| Logs    | `pnpm docker:logs`  |
 
 ---
 
