@@ -1,6 +1,5 @@
 <div align="center">
   <img src="apps/web/public/openpass.svg" alt="OpenPass Logo" width="120" />
-  <h1>OpenPass V2 🎟️</h1>
 </div>
 
 [![Turborepo](https://img.shields.io/badge/built%20with-Turborepo-ef4444.svg?style=flat-square&logo=turborepo)](https://turbo.build/)
