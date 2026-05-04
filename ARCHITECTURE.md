@@ -1,51 +1,55 @@
 # OpenPass Architecture Guide
 
-## Overview
-OpenPass is a monorepo-based full-stack application built using TypeScript and managed with Turborepo. It organizes the application into apps and shared packages for better scalability and maintainability.
+## Introduction
+OpenPass is built as a monorepo using Turborepo. This structure allows multiple applications and shared packages to live in a single repository, improving code reuse and development efficiency.
 
 ---
 
-## Project Structure
+## Apps Directory
+
+The `apps/` directory contains the main applications of the project.
 
 ### apps/web
-This folder contains the frontend application. It is responsible for rendering the user interface and handling user interactions.
-
-### packages
-This directory contains shared code such as utilities, configurations, and reusable modules that can be used across multiple apps.
-
-### scripts
-Contains automation scripts used for development, build, and deployment tasks.
+This is the primary frontend application built with Next.js. It handles user interactions, UI rendering, and communicates with backend logic.
 
 ---
 
-## Monorepo Setup
+## Packages Directory
 
-OpenPass uses Turborepo to manage multiple applications and packages efficiently. It enables faster builds and caching.
+The `packages/` directory contains shared and modular code used across the project.
 
-The `pnpm-workspace.yaml` file defines the workspace structure and links all packages together.
+- **@openpass/core**  
+  Contains the core business logic of the application.
+
+- **@openpass/db**  
+  Handles database interactions and data access.
+
+- **@openpass/ui**  
+  Provides reusable UI components used in the frontend.
+
+- **@openpass/email**  
+  Manages email-related functionality such as notifications.
+
+These packages promote modularity and code reuse across the application.
 
 ---
 
-## Key Tools
+## Data Flow
 
-- TypeScript: Used for type-safe development
-- pnpm: Fast package manager for handling dependencies
-- Turborepo: Manages builds and workflows in the monorepo
-- Docker: Used for containerization and deployment
+The application follows a structured data flow:
 
----
+1. The Next.js frontend (apps/web) handles user interactions.
+2. It calls functions from the `@openpass/core` package for business logic.
+3. The core package interacts with the `@openpass/db` package to fetch or store data.
+4. The response is returned back to the frontend and displayed to the user.
 
-## How Components Interact
-
-- The frontend (apps/web) uses shared logic from the `packages` folder
-- Shared modules ensure code reuse and consistency
-- Scripts automate workflows like build, test, and deployment
+This layered approach ensures separation of concerns and maintainability.
 
 ---
 
 ## Contribution Guide
 
-1. Clone the repository
-2. Install dependencies using `pnpm install`
-3. Run the development server
-4. Make changes and create a pull request
+1. Clone the repository  
+2. Install dependencies using `pnpm install`  
+3. Run the development server  
+4. Make changes and create a pull request  
