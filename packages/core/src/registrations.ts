@@ -3,7 +3,7 @@ import { CreateRegistrationInput } from '@openpass/types'
 import qrcode from 'qrcode'
 import crypto from 'crypto'
 import { sendTicketConfirmationEmail } from './email'
-// import { sendTicketConfirmationEmail } from '@openpass/ui'
+
 export async function createRegistration(data: CreateRegistrationInput, userId: string) {
   // Check if duplicate
   const existing = await prisma.registration.findFirst({

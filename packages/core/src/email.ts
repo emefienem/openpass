@@ -1,7 +1,8 @@
 import { Resend } from 'resend'
 import QRCode from 'qrcode'
 import { render } from '@react-email/render'
-import { TicketConfirmationEmail } from '@openpass/ui'
+import { TicketConfirmationEmail } from '@openpass/email'
+
 const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function sendTicketConfirmationEmail({
