@@ -47,5 +47,8 @@ jobs:
         run: pnpm turbo run db:generate
 
       - name: Run checks
-        # Turborepo handles running these in parallel across all packages!
-        run: pnpm turbo run check-types lint build
+        # Run lint and check-types first to avoid race conditions with build cleaning .next
+        run: pnpm turbo run check-types lint
+
+      - name: Build
+        run: pnpm turbo run build
