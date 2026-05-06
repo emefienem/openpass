@@ -62,6 +62,37 @@ export async function getEvents(skip: number = 0, take: number = 10) {
   return events
 }
 
+/**
+ * Lightweight query for the interactive world map.
+ * Only returns events that have geographic coordinates.
+ */
+export async function getEventsForMap() {
+  const events = await prisma.event.findMany({
+    where: {
+      isPublished: true,
+      deletedAt: null,
+      latitude: { not: null },
+      longitude: { not: null },
+    },
+    select: {
+      id: true,
+      title: true,
+      slug: true,
+      venue: true,
+      category: true,
+      startAt: true,
+      endAt: true,
+      latitude: true,
+      longitude: true,
+      _count: {
+        select: { registrations: true },
+      },
+    },
+    orderBy: { startAt: 'asc' },
+  })
+  return events
+}
+
 export async function getEventBySlug(slug: string) {
   const event = await prisma.event.findFirst({
     where: {
