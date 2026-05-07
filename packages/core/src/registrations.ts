@@ -34,10 +34,8 @@ export async function createRegistration(data: CreateRegistrationInput, userId: 
           status: RegistrationStatus.CONFIRMED,
         },
       })
-      const isFull = event.capacity && confirmedCount >= event.capacity
-      // if (event.capacity && event._count.registrations >= event.capacity) {
-      //   throw new Error('EVENT_FULL')
-      // }
+      const isFull =
+        event.capacity !== null && event.capacity !== undefined && confirmedCount >= event.capacity
 
       const registration = await tx.registration.create({
         data: {
@@ -72,7 +70,7 @@ export async function createRegistration(data: CreateRegistrationInput, userId: 
         console.error('[EMAIL ERROR]', err)
       })
     } else {
-      sendWaitlistEmail({
+      await sendWaitlistEmail({
         to: user.email,
         userName: user.name ?? user.email,
         eventTitle: event.title,
@@ -86,6 +84,10 @@ export async function createRegistration(data: CreateRegistrationInput, userId: 
   return {
     registration,
     qrImage: registration.status === RegistrationStatus.CONFIRMED ? qrCodeDataUrl : null,
+    message:
+      registration.status === RegistrationStatus.WAITLISTED
+        ? 'Event is full. You have been added to the waitlist.'
+        : 'Registration successful',
   }
 }
 
