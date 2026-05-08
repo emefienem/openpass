@@ -33,6 +33,7 @@ export async function createEvent(data: CreateEventInput, userId: string) {
       tags: data.tags,
       organiserId: userId,
       isPublished: true,
+      isFlagship: data.isFlagship || false,
     },
   })
 
